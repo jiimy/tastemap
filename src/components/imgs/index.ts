@@ -1,3 +1,4 @@
-import TestLogo from "./TestLogo";
+import SearchIcon from "./SearchIcon"
+import BookmarkIcon from "./BookmarkIcon"
 
-export { TestLogo }
+export { SearchIcon, BookmarkIcon }

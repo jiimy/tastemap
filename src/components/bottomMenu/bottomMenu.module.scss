@@ -1,0 +1,10 @@
+.bottom_menu {
+  width: 100%;
+  flex: 0 0 auto;
+  ul {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+}

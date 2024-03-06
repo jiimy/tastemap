@@ -1,10 +1,15 @@
 import React from 'react';
+import { BookmarkIcon, SearchIcon } from '../imgs';
+import s from './header.module.scss';
 
 const Header = () => {
   return (
-    <div>
-      헤더
-    </div>
+    <header className={s.header}>
+      <div>
+        <input type="search" className="search" />
+      </div>
+      <div><SearchIcon/></div>
+    </header>
   );
 };
 
