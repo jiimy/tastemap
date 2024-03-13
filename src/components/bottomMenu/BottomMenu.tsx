@@ -7,8 +7,8 @@ const BottomMenu = () => {
     <div className={s.bottom_menu}>
       <ul>
         <li>홈</li>
-        <li><Link href='/articles'>게시글</Link></li>
-        <li>글쓰기</li>
+        <li><Link href="/articles">게시글</Link></li>
+        <li><Link href="/post">글쓰기</Link></li>
         <li>알림</li>
         <li>마이</li>
       </ul>

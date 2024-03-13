@@ -4,14 +4,19 @@
 }
 
 .mobile-view {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-
   position: relative;
   min-height: 100vh;
   max-width: 430px;
   width: 100%;
+  > div {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+}
+
+.mobile-view > div{
+
 }
 
 .content {
