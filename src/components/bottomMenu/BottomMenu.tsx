@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import s from './bottomMenu.module.scss';
 
 const BottomMenu = () => {
@@ -6,7 +7,7 @@ const BottomMenu = () => {
     <div className={s.bottom_menu}>
       <ul>
         <li>홈</li>
-        <li>탐색</li>
+        <li><Link href='/articles'>게시글</Link></li>
         <li>글쓰기</li>
         <li>알림</li>
         <li>마이</li>

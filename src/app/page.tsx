@@ -9,8 +9,10 @@ export default function Home() {
   return (
     <main className={s['main']}>
       <div className={s['mobile-view']}>
-        <Header />
-        <div className={s.content}>컨텐츠</div>
+        <div className={s.content}>
+          <h2></h2>
+
+        </div>
         <BottomMenu/>
       </div>
     </main>
