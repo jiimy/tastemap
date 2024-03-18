@@ -2,7 +2,7 @@ import React from 'react';
 
 const Index = () => {
   return (
-    <div>
+    <div className='content'>
       게시글
     </div>
   );

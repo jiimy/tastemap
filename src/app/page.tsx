@@ -7,7 +7,7 @@ import BottomMenu from '@/components/bottomMenu/BottomMenu';
 export default function Home() {
   return (
     <div>
-      <div className={s.content}>
+      <div className='content'>
       지도 등 내부 컨텐츠1111
       <br />
       </div>
