@@ -2,13 +2,25 @@ import React from 'react';
 import { BookmarkIcon, SearchIcon } from '../imgs';
 import s from './header.module.scss';
 
-const Header = () => {
+type HeaderType = {
+  theme: 'search' | 'article', // 지도 검색, 
+  title?: string
+}
+
+const Header = ({ theme = 'search', title }: HeaderType) => {
   return (
     <header className={s.header}>
-      <div>
-        <input type="search" className="search" />
-      </div>
-      <div><SearchIcon/></div>
+      {theme === 'search' && <>
+        <div>
+          <input type="search" className="search" />
+        </div>
+        <div><SearchIcon /></div>
+      </>
+      }
+      {theme === 'article' && <>
+        <div>{title}</div>
+      </>
+      }
     </header>
   );
 };

@@ -1,38 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# (가제) 맛지도
+1차. 맛집 공유 서비스
+자신이 방문한 음식점을 지도의 경로로 표현하여 맛의 지도를 그림
 
-## Getting Started
+2차. 뽈레라는 기존 서비스가 있어 몇몇 구성 참고. 
 
-First, run the development server:
+## 용어
+### 맛지도란? 
+서비스의 이름이면서 자신이 방문한 음식점들의 위치를 지도로 경로 표현. 
+지도 상엔 방문한 음식점들의 정보가 마커로 표시. 누르면 음식점의 정보와 관련 게시글의 리스트가 보여짐.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## 하단 메뉴 설명
+# 홈
+상단 검색 
+┗ 검색 설정(거리순)
+지도
+빠른 메뉴 검색
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# 게시글
+모든 게시글 보기(기본)
+헤더안에 정렬버튼 포함 - 좋아요 많은 순, 팔로윙, 댓글많은 순, 공유많은 순, 맛지도 등
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# 글쓰기
+## 일반적 글쓰기
+글내용(필수)
+사진추가(선택)
+장소등록(선택)
+평가(별로에요, 좋아요, 추천해요) or 별점같은걸로 (장소등록시 작성가능. 선택)
+메뉴 (선택)
+임시저장
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 맛지도 공유하기
+맛지도만 따로 공유가 가능. 
+리스트의 목록 - 방문한 음식점수, 주요 음식점 태그(ex #중식, #한식), 주요 위치(ex #경기도, #전국)
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# 알림
+모든 알림(기본)
+헤더안에 정려버튼 포함 - 답글, 팔로윙한 사람의 글 최신순. 
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# 마이페이지
+팔로윙, 팔로워 - 팔로윙시 상대방
+작성한 글
+맛지도 
+  ┗ (지도로보기) 지도와 경로 표현. 
+  ┗ (리스트로보기) 방문순으로 리스트로 정렬. (음식점이름, 방문시기, 위치)
 
-## Learn More
+## 로그인
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 회원가입
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## 번호변깅시? 
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
