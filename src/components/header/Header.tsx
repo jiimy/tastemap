@@ -11,9 +11,7 @@ const Header = ({ theme = 'search', title }: HeaderType) => {
   return (
     <header className={s.header}>
       {theme === 'search' && <>
-        <div>
-          <input type="search" className="search" />
-        </div>
+        <input type="search" className="search" />
         <div><SearchIcon /></div>
       </>
       }

@@ -3,7 +3,10 @@ import React from 'react';
 const Index = () => {
   return (
     <div className='content'>
-      게시글
+      <nav>
+        <div>게시글</div>
+        <div>맛지도</div>
+      </nav>
     </div>
   );
 };
