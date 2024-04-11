@@ -1,6 +1,8 @@
 .bottom_menu {
+  position: relative;
   width: 100%;
   flex: 0 0 auto;
+  z-index: 1;
   ul {
     display: flex;
     height: 40px;

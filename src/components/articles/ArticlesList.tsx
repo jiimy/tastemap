@@ -2,10 +2,10 @@ import React from 'react';
 import Articles from './Articles';
 
 type articlesListType = {
-  type: 'board' | '',
+  type?: 'board' | '',
 }
 
-const ArticleList = ({ type }: articlesListType) => {
+const ArticleList = ({ type = 'board' }: articlesListType) => {
   return (
     <div>
       <Articles />

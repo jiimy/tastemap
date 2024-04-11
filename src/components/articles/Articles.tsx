@@ -1,4 +1,8 @@
 import React from 'react';
+import s from './articles.module.scss';
+import { BookmarkIcon, HeartIcon } from '../imgs';
+import CommentIcon from '../imgs/CommentIcon';
+import Link from 'next/link';
 
 // type articlesListType = {
 //   type: 'board' | '',
@@ -6,17 +10,15 @@ import React from 'react';
 
 const Articles = () => {
   return (
-    <div>
+    <Link className={s.articles} href="">
       - 프로필이미지, 닉네임, 아이디, 상태-좋아요,추천해요, 아쉬워요
-      <br />
-      내용 - 3wnfRkwlaks qhduwlrp. 
-      <br />
-      이미지
-      <br />
-      위치
-      <br />
-      좋아요 수, 댓글 수, 북마크 수, 공유하기.
-    </div>
+      <div className={s.etc}>
+        <span><HeartIcon /> 2</span>
+        <span><CommentIcon /> 2</span>
+        <span><BookmarkIcon/> 2</span>
+
+      </div>
+    </Link>
   );
 };
 
