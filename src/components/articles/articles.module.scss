@@ -1,5 +1,8 @@
 .articles {
-  .content {}
+  .content {
+    @include dotdotdot();
+    max-width: 100%;
+  }
 
   .img {
     display: flex;

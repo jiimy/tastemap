@@ -8,7 +8,7 @@ type articlesListType = {
 const ArticleList = ({ type = 'board' }: articlesListType) => {
   return (
     <div>
-      <Articles />
+      <Articles type={'list'}/>
     </div>
   );
 };
