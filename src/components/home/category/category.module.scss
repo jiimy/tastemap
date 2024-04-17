@@ -1,0 +1,16 @@
+.category {
+  ul {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    li {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      aspect-ratio: 16 / 14;
+      width: 20%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+  }
+}
