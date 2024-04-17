@@ -8,7 +8,8 @@ type articlesListType = {
 const ArticleList = ({ type = 'board' }: articlesListType) => {
   return (
     <div>
-      <Articles type={'list'}/>
+      <Articles theme={'list'}/>
+      <Articles theme={'list'}/>
     </div>
   );
 };

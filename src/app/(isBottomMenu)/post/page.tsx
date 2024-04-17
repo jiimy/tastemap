@@ -4,17 +4,22 @@ import React from 'react';
 const Index = () => {
   return (
     <div className='content'>
-      취소 <br />완료
+      <div className="bar">
+        <span>취소</span>
+        <span>완료</span>
+      </div>
+      <UserInfo theme='post' />
       <br />
-      작성자 프로필, 닉네임 
-      <UserInfo/>
-      <br />
-      내용
-      <textarea name="" id="" cols={30} rows={10}></textarea>
-      <br />
-      사진추가
-      <br />
-      장소
+      <textarea name="" id="" cols={30} rows={10} placeholder='내용작성'></textarea>
+      <div>
+        <span>
+          <input type="file" name="" id="" />
+          사진추가
+        </span>
+        <span>
+          장소
+        </span>
+      </div>
     </div>
   );
 };

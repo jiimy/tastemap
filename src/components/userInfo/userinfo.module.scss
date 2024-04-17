@@ -1,6 +1,7 @@
 .userinfo {
   &.is_post {
-    
+    display: flex;
+    align-items: center;
   }
 }
 
@@ -9,6 +10,7 @@
   height: 30px;
   border-radius: 50%;
   overflow: hidden;
+  
   img {
     width: 100%;
     height: 100%;

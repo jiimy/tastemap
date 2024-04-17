@@ -8,6 +8,7 @@
   min-height: 100vh;
   max-width: 430px;
   width: 100%;
+  overflow: hidden;
   > div {
     display: flex;
     flex-direction: column;

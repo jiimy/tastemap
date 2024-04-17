@@ -4,6 +4,7 @@ import s from './category.module.scss';
 const Category = () => {
   return (
     <div className={s.category}>
+      <h3>카테고리</h3>
       <ul>
         <li>음식점</li>
         <li>카페</li>

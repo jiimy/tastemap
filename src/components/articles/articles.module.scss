@@ -1,4 +1,18 @@
 .articles {
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  .list_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .content {
     @include dotdotdot();
     max-width: 100%;
@@ -10,6 +24,28 @@
     overflow-x: auto;
     white-space: nowrap;
     gap: 0 6px;
+    &.list_img {
+      position: relative;
+      width: fit-content;
+      .count {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        color: white;
+        font-size: 40px;
+      }
+      img {
+        display: none;
+        &:first-child {
+          display: block;
+        }
+      }
+    }
+
     img {
       flex: 0 0 auto;
       width: 100px;
