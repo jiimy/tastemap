@@ -1,0 +1,19 @@
+.bar {
+  display: flex;
+  color: $main-color;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  font-size: 16px;
+}
+
+.textarea {
+  margin-top: 10px;
+  flex: 1 1 auto;
+  textarea {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    resize: none;
+  }
+}

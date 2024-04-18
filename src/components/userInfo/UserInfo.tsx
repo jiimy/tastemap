@@ -16,8 +16,7 @@ const UserInfo = ({ theme = 'mypage' }: userInfoStyle) => {
         <img src="https://source.unsplash.com/random" alt="프로필 이미지" />
         {/* <Imaage src="https://source.unsplash.com/random" alt="프로필 이미지" width={200} height={200}/> */}
       </div>
-      <span>닉네임</span>
-      <span>@아이디</span>
+      <span>닉네임 @아이디</span>
     </div>
   );
 };

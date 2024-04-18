@@ -59,4 +59,8 @@ a:active {
 
 textarea {
   resize: none;
+  box-sizing: border-box;
+}
+textarea:focus-visible {
+  outline: none;
 }
