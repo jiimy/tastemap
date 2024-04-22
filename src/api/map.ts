@@ -8,7 +8,7 @@ type mapType = {
 // 지도 검색
 export async function getMapApi({ search }: mapType) {
   const res = await axios.get(`https://openapi.naver.com/v1/search/local.xml?query=${search}&display=10&start=1&sort=random`, {
-    params: {
+    headers: {
       'X-Naver-Client-Id': `${process.env.NEXT_PUBLIC_SEARCH_CLIENT_ID}`, 'X-Naver-Client-Secret': `${process.env.NEXT_PUBLIC_SEARCH_CLIENT_SECRET}`,
     }
   })

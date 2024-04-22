@@ -16,5 +16,6 @@ export const LocateStateStore = create<LocateState>()((set) => ({
   },
   // increase: (by) => set((state) => ({ bears: state.bears + by })),
   // updateLocate: (newLatitude: any, newLongitude: any) => set({ latitude: newLatitude, longitude: newLongitude }),
-  setLocate: () => set((state) => ({ ...state })),
+  // setLocate: () => set((state) => ({ ...state })),
+  setLocate: (state: any) => set({ locate: state }),
 }))

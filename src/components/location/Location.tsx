@@ -12,23 +12,24 @@ const geolocationOptions = {
 
 const Location = () => {
   const { location, error } = useGeoLocation(geolocationOptions);
-  const { locate, setLocate } = LocateStateStore(); 
+  // const { locate, setLocate } = LocateStateStore(); 
 
   // set
+  // const increasePopulation = LocateStateStore(state => state.setLocate);
+  // const { setLocate } = LocateStateStore();
   // const setLocation = useSetRecoilState(locationSelector);
-  const bears = LocateStateStore((state) => state)
+  const setLocate = LocateStateStore((state) => state.setLocate)
   // get
   // const getLocation = useRecoilValue(locationSelector);
 
   useEffect(() => {
     console.log('location', location);
     if (location) {
-      // setLocation(location);
-      setLocate(location);
+      setLocate(location)
     }
   }, [location])
-  console.log('저장됨? ', location, bears);
-  
+
+  // console.log('저장됨? ', location);
 
   return null;
 }
