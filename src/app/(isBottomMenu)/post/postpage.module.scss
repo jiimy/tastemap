@@ -1,10 +1,12 @@
 .bar {
   display: flex;
-  color: $main-color;
   justify-content: space-between;
   align-items: center;
   height: 40px;
   font-size: 16px;
+  span {
+    cursor: pointer;
+  }
 }
 
 .textarea {

@@ -1,12 +1,21 @@
+'use client';
+
 import UserInfo from '@/components/userInfo/UserInfo';
-import React from 'react';
+import React, { useEffect } from 'react';
 import s from './postpage.module.scss';
+import { useRouter } from 'next/navigation';
 
 const Index = () => {
+  const router = useRouter();
+  // useEffect(() => {
+  //   history.pushState(null, "", "");
+  // }, [])
+
   return (
     <div className='content'>
       <div className={s.bar}>
-        <span>취소</span>
+        {/* <span onClick={() => history.go(-1)}>취소</span> */}
+        <span onClick={() => router.back()}>취소</span>
         <span>완료</span>
       </div>
       <UserInfo theme='post' />
