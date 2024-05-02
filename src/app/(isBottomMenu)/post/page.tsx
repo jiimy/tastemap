@@ -10,6 +10,7 @@ const Index = () => {
   // useEffect(() => {
   //   history.pushState(null, "", "");
   // }, [])
+  // TODO: 취소 눌렀을시 작성된 내용이 있다면 임시저장
 
   return (
     <div className='content'>
