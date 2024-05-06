@@ -1,15 +1,24 @@
-import React from 'react';
+'use client';
+
+import ShareButton from '@/components/button/ShareButton';
+import { getCookie } from '@/util/authCookie';
+import React, { useEffect } from 'react';
 
 const Index = () => {
+  useEffect(() => {
+    const cookie = getCookie('atk');
+    console.log('cc', cookie);
+  }, [])
+
+
   return (
     <div className='content'>
-      
-      (링크) 프로필공유
+      <ShareButton />
       <br />
       (메뉴) 설정
-      <div>
-        <div> 2 팔로잉 </div>
-        <div>0 팔로워</div>
+      <div className='follow'>
+        <div> <span>2</span> 팔로잉 </div>
+        <div><span>0</span> 팔로워</div>
       </div>
       <div>
         <ul>

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const Button = ({ children }: any) => {
   const count = React.Children.count(children);
-  console.log("Children count:", count);
+  // console.log("Children count:", count);
   
   return (
     <div role='button' className={classNames([s.btn], {
