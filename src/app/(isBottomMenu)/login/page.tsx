@@ -18,7 +18,7 @@ const Index = () => {
   const onSubmit = (data: any) => {
     console.log('dd', data);
     // TEST: 임시 저장
-    if(data.id == '1111' && data.password == '!111') {
+    if(data.id == '1111' && data.password == 'a111') {
       setCookie('atk', 'atk');
       console.log('atk임시 저장')
     }

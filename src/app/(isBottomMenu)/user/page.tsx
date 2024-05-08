@@ -3,11 +3,17 @@
 import ShareButton from '@/components/button/ShareButton';
 import { getCookie } from '@/util/authCookie';
 import React, { useEffect } from 'react';
+import { redirect } from 'next/navigation';
 
 const Index = () => {
+
   useEffect(() => {
     const cookie = getCookie('atk');
     console.log('cc', cookie);
+    if (cookie == undefined) {
+      console.log('언디파인드');
+      redirect('/login');
+    }
   }, [])
 
 
