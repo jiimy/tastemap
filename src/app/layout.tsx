@@ -20,6 +20,7 @@ export default function RootLayout({
             {children}
           </div>
         </main>
+        <div id="modal" />
       </body>
     </html>
   )
