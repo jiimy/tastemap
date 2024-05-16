@@ -1,8 +1,11 @@
 .btn {
   display: flex;
-  height: 26px;
-  padding: 0 6px;
+  height: 32px;
+  max-width: fit-content;
+  padding: 0 12px;
   align-items: center;
+  background: #ccc;
+  cursor: pointer;
 }
 
 .btn_flex {

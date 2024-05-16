@@ -4,8 +4,10 @@ import Button from '@/components/button/Button';
 import { setCookie } from '@/util/authCookie';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useRouter } from "next/navigation"
 
 const Index = () => {
+  const router = useRouter();
 
   const {
     register,
@@ -21,6 +23,7 @@ const Index = () => {
     if(data.id == '1111' && data.password == 'a111') {
       setCookie('atk', 'atk');
       console.log('atk임시 저장')
+      router.push("/");
     }
   };
 

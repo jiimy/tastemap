@@ -1,9 +1,10 @@
 'use client';
 
 import ShareButton from '@/components/button/ShareButton';
-import { getCookie } from '@/util/authCookie';
+import { getCookie, removeCookie, setCookie } from '@/util/authCookie';
 import React, { useEffect } from 'react';
 import { redirect } from 'next/navigation';
+import Button from '@/components/button/Button';
 
 const Index = () => {
 
@@ -14,14 +15,21 @@ const Index = () => {
       console.log('언디파인드');
       redirect('/login');
     }
-  }, [])
+  }, [getCookie('atk')])
 
 
   return (
     <div className='content'>
       <ShareButton />
       <br />
-      (메뉴) 설정
+      <Button onClick={() => {
+        removeCookie('atk')
+        redirect('/');
+      }}>로그아웃</Button>
+      <br />
+      <div className="setting">
+        (아이콘)설정
+      </div>
       <div className='follow'>
         <div> <span>2</span> 팔로잉 </div>
         <div><span>0</span> 팔로워</div>
