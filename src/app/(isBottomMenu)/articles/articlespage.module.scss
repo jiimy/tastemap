@@ -1,17 +1,11 @@
-.tab {
-  position: absolute;
-  display: flex;
+.tab_nav {
+  // display: ;
   width: 100%;
-  height: 40px;
-  align-items: center;
-  text-align: center;
-
-  .tab_nav {
-    // display: ;
-    width: 100%;
+  cursor: pointer;
+  &.is_select {
+    font-weight: bold;
   }
 }
-
 .articles {
   margin-top: 40px;
 }

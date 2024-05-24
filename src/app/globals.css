@@ -51,6 +51,7 @@ a {
 }
 a:visited {
   text-decoration: none;
+  color: inherit;
 }
 a:active {
   color: inherit;

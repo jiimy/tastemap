@@ -9,9 +9,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <head>
-        <Head />
-      </head>
+      <Head />
       <body>
         {/* <main className={s['main']}>
           <div className={s['mobile-view']}> */}
