@@ -14,7 +14,7 @@ const BasicModal = ({ setOnModal, children, dimClick, isDim = true, className }:
   return (
     <ModalFrame
       setOnModal={setOnModal}
-      isDim={isDim}
+      isDim={dimClick || isDim}
       onClose
       dimClick={dimClick}
       className={className}

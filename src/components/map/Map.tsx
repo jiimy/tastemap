@@ -8,7 +8,9 @@ const Map = () => {
   const [route, setRoute] = useState([]);
   // const getLocation = 
   useEffect(() => {
-    console.log('저장된거 : ', locate);
+    if(locate.latitude !== 0) {
+      console.log('저장된거 : ', locate);
+    }
   }, [locate])
 
   // useEffect(() => {

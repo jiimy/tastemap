@@ -40,7 +40,7 @@ const ModalFrame = ({
             )}
           </div>
         </div>
-        {isDim && <div className="w-full h-full bg-dim" onClick={() => (dimClick && setOnModal(false))}></div>}
+        {isDim && <div className={s.dim} onClick={() => (dimClick && setOnModal(false))}></div>}
       </div>
     </ModalPortal>
   );

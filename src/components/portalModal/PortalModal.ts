@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import ReactDOM from "react-dom";
 
@@ -23,7 +24,10 @@ const ModalPortal = ({ children, onClose }: ModalProps) => {
 
   const modalRoot = document.getElementById("modal");
 
-  if (!modalRoot) return null;
+  if (!modalRoot) {
+    return (`<></>`);
+    // return null;
+  };
 
   return ReactDOM.createPortal(children, modalRoot);
 };
