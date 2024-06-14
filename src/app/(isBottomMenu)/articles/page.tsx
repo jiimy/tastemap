@@ -5,22 +5,35 @@ import React, { useState } from 'react';
 import s from './articlespage.module.scss';
 import SubTitle from '@/components/subTitle/SubTitle';
 import classNames from 'classnames';
+import Tab from '@/components/tab/Tab';
 
 const Index = () => {
   const [tab, setTab] = useState(0);
 
+  const handleSelectTap = (index: number) => {
+    setTab(index);
+  };
+
   return (
     <div className='content'>
       <SubTitle>
-        <div className={classNames([s.tab_nav], {
-          [s.is_select]: tab === 0
-        })} onClick={() => setTab(0)}>전체</div>
-        <div className={classNames([s.tab_nav], {
-          [s.is_select]: tab === 1
-        })} onClick={() => setTab(1)}>구독</div>
+        {tab}
+        <Tab tab={[
+          { text: '전체', select: false },
+          { text: '구독', select: false }
+        ]}
+          selectTap={handleSelectTap}
+        />
       </SubTitle>
-      <div className={s.articles}>
-        <ArticleList />
+      <div>
+        {tab === 0 &&
+        // 전체
+          <ArticleList type=''/>
+        }
+        {tab === 1 &&
+        // 구독
+          <ArticleList />
+        }
       </div>
     </div>
   );
