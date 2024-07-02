@@ -2,7 +2,7 @@
 const path = require('path')
 const nextConfig = {
   // output: "export",
-  distDir: "out",
+  // distDir: "out",
   sassOptions: {
   includePaths: [path.join(__dirname, 'src/assets/styles')],
   prependData: `@import "_mixins.scss"; @import "_variables";` ,
