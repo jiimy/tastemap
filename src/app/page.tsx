@@ -6,7 +6,6 @@ import BottomMenu from '@/components/bottomMenu/BottomMenu';
 import Location from '@/components/location/Location';
 import Sheet from '@/components/home/sheet/Sheet';
 import Map from '@/components/map/Map';
-import { Button } from 'snow-white-ui';
 
 export default function Home() {
   return (
@@ -15,7 +14,6 @@ export default function Home() {
         <Header theme='search' />
         <Map />
         <Sheet />
-        <Button >111</Button>
       </div>
       <BottomMenu />
       <Location />
