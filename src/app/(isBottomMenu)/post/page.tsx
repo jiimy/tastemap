@@ -4,33 +4,38 @@ import UserInfo from '@/components/userInfo/UserInfo';
 import React, { useEffect } from 'react';
 import s from './postpage.module.scss';
 import { useRouter } from 'next/navigation';
+import { post } from './post';
+
+declare module 'react' {
+  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
+    name?: string;
+  }
+}
 
 const Index = () => {
   const router = useRouter();
-  // useEffect(() => {
-  //   history.pushState(null, "", "");
-  // }, [])
-  // TODO: 취소 눌렀을시 작성된 내용이 있다면 임시저장
 
   return (
     <div className='content'>
-      <div className={s.bar}>
-        {/* <span onClick={() => history.go(-1)}>취소</span> */}
-        <span onClick={() => router.back()}>취소</span>
-        <span>완료</span>
-      </div>
-      <UserInfo theme='post' />
-      <div className={s.textarea}>
-        <textarea name="" id="" cols={30} rows={10} placeholder='내용작성'></textarea>
-      </div>
+      <form action={post}>
+        <div className={s.bar}>
+          {/* <span onClick={() => history.go(-1)}>취소</span> */}
+          <span onClick={() => router.back()}>취소</span>
+          <button type='submit'>완료</button>
+        </div>
+        <UserInfo theme='post' />
+        <div className={s.textarea}>
+          <textarea name="content" id=""></textarea>
+        </div>
+      </form>
       <div>
-        <span className={s.file}>
+        {/* <span className={s.file}>
           <input type="file" name="" id="" />
           사진추가
         </span>
         <span className={s.place}>
           장소
-        </span>
+        </span> */}
       </div>
     </div>
   );

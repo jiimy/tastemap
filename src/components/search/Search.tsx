@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { SearchIcon } from '../imgs';
 import s from './search.module.scss';
-import { getMapApi } from '@/api/map';
+import { getMapApi } from '@/app/api/mapSearch/route';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,7 +21,7 @@ const Search = () => {
   return (
     <div className={s.search}>
       <form onSubmit={onSubmit}>
-        <input type="search" className="search" value={searchTerm} onChange={handleChange}/>
+        <input type="search" className="search" value={searchTerm} onChange={handleChange} />
         <div><SearchIcon onClick={(e: any) => {
           onSubmit(e);
         }} /></div>

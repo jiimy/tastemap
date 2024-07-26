@@ -4,18 +4,27 @@
   align-items: center;
   height: 40px;
   font-size: 16px;
+
   span {
     cursor: pointer;
   }
 }
 
 .textarea {
+  position: relative;
   margin-top: 10px;
-  flex: 1 1 auto;
+  border: 1px solid #000;
+  border-radius: 4px;
+  min-height: 400px;
+  overflow: hidden;
+
   textarea {
-    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
+    height: 100%;
+    padding: 10px;
     border: none;
-    resize: none;
   }
 }
