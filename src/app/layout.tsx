@@ -1,6 +1,7 @@
 import './globals.css'
 import Head from './head'
 import './layout.scss';
+import QueryProviders from './provider/queryProvider';
 
 export default function RootLayout({
   children,
@@ -11,13 +12,15 @@ export default function RootLayout({
     <html lang="ko">
       <Head />
       <body>
-        {/* <main className={s['main']}>
+        <QueryProviders>
+          {/* <main className={s['main']}>
           <div className={s['mobile-view']}> */}
-        <main className="main">
-          <div className="mobile-view">
-            {children}
-          </div>
-        </main>
+          <main className="main">
+            <div className="mobile-view">
+              {children}
+            </div>
+          </main>
+        </QueryProviders>
         <div id="modal" />
       </body>
     </html>
