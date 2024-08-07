@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { SearchIcon } from '../imgs';
 import s from './search.module.scss';
-import { getMapApi } from '@/app/api/mapSearch/route';
 
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -11,7 +10,7 @@ const Search = () => {
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log('e', searchTerm);
-    getMapApi(searchTerm)
+    // getMapApi(searchTerm)
   }
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
