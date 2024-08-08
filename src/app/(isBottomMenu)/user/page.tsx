@@ -1,31 +1,32 @@
 'use client';
 
 import ShareButton from '@/components/button/ShareButton';
-import { getCookie, removeCookie, setCookie } from '@/util/authCookie';
-import React, { useEffect } from 'react';
+import { getCookie } from '@/util/authCookie';
+import { signOut, useSession } from 'next-auth/react';
 import { redirect } from 'next/navigation';
-import Button from '@/components/button/Button';
+import { useEffect } from 'react';
 
 const Index = () => {
+  const { data: session } = useSession();
 
   useEffect(() => {
-    const cookie = getCookie('atk');
-    console.log('cc', cookie);
-    if (cookie == undefined) {
-      console.log('언디파인드');
+    // const cookie = getCookie('atk');
+    // console.log('cc', cookie);
+    // if (cookie == undefined) {
+    //   console.log('언디파인드');
+    //   redirect('/login');
+    // }
+    if (!session) {
       redirect('/login');
     }
-  }, [getCookie('atk')])
+  }, [])
 
 
   return (
     <div className='content'>
       <ShareButton />
       <br />
-      <Button onClick={() => {
-        removeCookie('atk')
-        redirect('/');
-      }}>로그아웃</Button>
+      <button onClick={() => signOut()}>로그아웃</button>
       <br />
       <div className="setting">
         (아이콘)설정

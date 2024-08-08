@@ -1,3 +1,4 @@
+import AuthContext from '@/context/AuthContext';
 import './globals.css'
 import Head from './head'
 import './layout.scss';
@@ -13,13 +14,15 @@ export default function RootLayout({
       <Head />
       <body>
         <QueryProviders>
-          {/* <main className={s['main']}>
+          <AuthContext>
+            {/* <main className={s['main']}>
           <div className={s['mobile-view']}> */}
-          <main className="main">
-            <div className="mobile-view">
-              {children}
-            </div>
-          </main>
+            <main className="main">
+              <div className="mobile-view">
+                {children}
+              </div>
+            </main>
+          </AuthContext>
         </QueryProviders>
         <div id="modal" />
       </body>
