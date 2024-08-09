@@ -10,17 +10,10 @@ const Index = () => {
   const { data: session } = useSession();
 
   useEffect(() => {
-    // const cookie = getCookie('atk');
-    // console.log('cc', cookie);
-    // if (cookie == undefined) {
-    //   console.log('언디파인드');
-    //   redirect('/login');
-    // }
     if (!session) {
       redirect('/login');
     }
   }, [])
-
 
   return (
     <div className='content'>

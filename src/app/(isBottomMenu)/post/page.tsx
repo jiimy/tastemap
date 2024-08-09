@@ -5,6 +5,8 @@ import React, { useEffect } from 'react';
 import s from './postpage.module.scss';
 import { useRouter } from 'next/navigation';
 import { post } from './post';
+import { sql } from '@vercel/postgres';
+import { revalidatePath } from 'next/cache';
 
 declare module 'react' {
   interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
@@ -14,6 +16,19 @@ declare module 'react' {
 
 const Index = () => {
   const router = useRouter();
+
+  const insertUser = async (formData: FormData) => {
+    try {
+      await sql`INSERT INTO board (name, content)
+    VALUES (${String(formData.get("name"))}, ${String(
+        formData.get("content")
+      )})
+    ON CONFLICT (email) DO NOTHING;`;
+      // revalidatePath("/user");
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   return (
     <div className='content'>
