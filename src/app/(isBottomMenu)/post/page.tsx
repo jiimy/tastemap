@@ -17,19 +17,6 @@ declare module 'react' {
 const Index = () => {
   const router = useRouter();
 
-  const insertUser = async (formData: FormData) => {
-    try {
-      await sql`INSERT INTO board (name, content)
-    VALUES (${String(formData.get("name"))}, ${String(
-        formData.get("content")
-      )})
-    ON CONFLICT (email) DO NOTHING;`;
-      // revalidatePath("/user");
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   return (
     <div className='content'>
       <form action={post}>
@@ -40,7 +27,7 @@ const Index = () => {
         </div>
         <UserInfo theme='post' />
         <div className={s.textarea}>
-          <textarea name="content" id=""></textarea>
+          <textarea name="content" id="content"></textarea>
         </div>
       </form>
       <div>

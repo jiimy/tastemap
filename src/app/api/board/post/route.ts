@@ -2,25 +2,39 @@ import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
-  const body = await request.json();
-
-  // 요청한 데이터가 존재하지 않는다면 404 에러 반환
-  if (!body.name) {
-    return NextResponse.json({ error: "Name is required" }, { status: 404 });
-  }
-
-  if (!body.id) {
-    return NextResponse.json({ error: "Id is required" }, { status: 404 });
-  }
-
   try {
-    // await sql`INSERT INTO Board (name, content) VALUES (${body.name}, ${body.content});`;
-    await sql`INSERT INTO Board (username, content) VALUES ('경', '111');`;
+    const { name, content } = await request.json();
+    console.log('서버 액션 : ', request, name, content);
+
+    if (!name || !content) {
+      throw new Error('Pet and owner names are required');
+    }
+
+    await sql`INSERT INTO board (name, content) VALUES (${name}, ${content});`;
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    return NextResponse.json({ error: request }, { status: 500 });
   }
 
-  // 그렇지 않다면 전달 객체를 응답 객체로 반환
-  const board = await sql`SELECT * FROM board`
+  const board = await sql`SELECT * FROM board;`;
   return NextResponse.json({ board }, { status: 200 });
-} 1
+}
+
+
+// import { sql } from '@vercel/postgres';
+// import { NextResponse } from 'next/server';
+
+// export async function GET(request: Request) {
+//   const { searchParams } = new URL(request.url);
+//   const name = searchParams.get('name');
+//   const content = searchParams.get('content');
+
+//   try {
+//     if (!name || !content) throw new Error('Pet and owner names required');
+//     await sql`INSERT INTO board (name, content) VALUES (${name}, ${content});`;
+//   } catch (error) {
+//     return NextResponse.json({ error }, { status: 500 });
+//   }
+
+//   const board = await sql`SELECT * FROM board;`;
+//   return NextResponse.json({ board }, { status: 200 });
+// }
