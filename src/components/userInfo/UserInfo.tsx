@@ -14,7 +14,7 @@ type userInfoStyle = {
 const UserInfo = ({ theme = 'mypage' }: userInfoStyle) => {
   const { data: session } = useSession();
 
-  console.log('그라바타', session?.user?.email);
+  console.log('그라바타', session, session?.user?.email);
 
   return (
     <div className={classNames([s.userinfo], {

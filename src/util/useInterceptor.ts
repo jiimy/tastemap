@@ -4,7 +4,7 @@ import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse, In
 import { useRouter } from "next/navigation";
 
 const apiInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: 'http://localhost:3000',
   timeout: 5000,
 });
 
@@ -37,7 +37,7 @@ apiInstance.interceptors.response.use(
     if (err.response && err.response.status === 401) {
       // removeCookie("ticket-atk");
       // 토큰 재발급 요청, apiInstance가 아닌 axios로 요청하기
-      
+
       return Promise.reject(err);
     }
 

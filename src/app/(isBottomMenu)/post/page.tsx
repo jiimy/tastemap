@@ -1,21 +1,14 @@
 'use client';
 
 import UserInfo from '@/components/userInfo/UserInfo';
-import React, { useEffect } from 'react';
-import s from './postpage.module.scss';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { post } from './post';
-import { sql } from '@vercel/postgres';
-import { revalidatePath } from 'next/cache';
-
-declare module 'react' {
-  interface HTMLAttributes<T> extends AriaAttributes, DOMAttributes<T> {
-    name?: string;
-  }
-}
+import s from './postpage.module.scss';
 
 const Index = () => {
   const router = useRouter();
+  const { data: session } = useSession();
 
   return (
     <div className='content'>
@@ -24,6 +17,7 @@ const Index = () => {
           {/* <span onClick={() => history.go(-1)}>취소</span> */}
           <span onClick={() => router.back()}>취소</span>
           <button type='submit'>완료</button>
+          <input type="text" name="name" id="name" value={session?.user?.email as string} />
         </div>
         <UserInfo theme='post' />
         <div className={s.textarea}>

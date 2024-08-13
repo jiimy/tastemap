@@ -4,19 +4,19 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const { name, content } = await request.json();
-    console.log('서버 액션 : ', request, name, content);
 
     if (!name || !content) {
-      throw new Error('Pet and owner names are required');
+      throw new Error('name and content are required');
     }
 
     await sql`INSERT INTO board (name, content) VALUES (${name}, ${content});`;
+    return NextResponse.redirect(new URL("http://localhost:3000/articles", request.url), 303);
+    // const board = await sql`SELECT * FROM board;`;
+    // return NextResponse.json({ board }, { status: 200 }) ;
   } catch (error) {
     return NextResponse.json({ error: request }, { status: 500 });
   }
 
-  const board = await sql`SELECT * FROM board;`;
-  return NextResponse.json({ board }, { status: 200 });
 }
 
 
