@@ -5,10 +5,14 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { post } from './post';
 import s from './postpage.module.scss';
+import { useRef, useState } from 'react';
+import { PutBlobResult } from '@vercel/blob';
 
 const Index = () => {
   const router = useRouter();
   const { data: session } = useSession();
+  const inputFileRef = useRef<HTMLInputElement>(null);
+  const [blob, setBlob] = useState<PutBlobResult | null>(null);
 
   return (
     <div className='content'>
@@ -23,6 +27,7 @@ const Index = () => {
         <div className={s.textarea}>
           <textarea name="content" id="content"></textarea>
         </div>
+        <input name="file" ref={inputFileRef} type="file" multiple />
       </form>
       <div>
         {/* <span className={s.file}>

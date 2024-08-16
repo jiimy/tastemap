@@ -1,4 +1,5 @@
 import apiInstance from "@/util/useInterceptor";
+import { PutBlobResult } from "@vercel/blob";
 import { sql } from "@vercel/postgres";
 import axios from "axios";
 import { revalidatePath } from "next/cache";
@@ -10,44 +11,38 @@ interface postType {
 }
 
 export async function post(formData: FormData) {
-  console.log('클릭', formData.get('content'));
+  console.log('클릭', (formData.get('file') as File)?.name);
 
   const name = formData.get('name');
   const content = formData.get('content');
+  const files = formData.getAll('file') as File[];
 
-  // try {
-  const res = await axios.post('http://localhost:3000/api/board/post', {
-    // const res = await apiInstance.post('/api/board/post', {
-    name,
-    content
-  });
+  try {
+    const uploadedImages: string[] = [];
 
-  console.log('res: ', res);
+    for (const file of files) {
+      const response = await fetch(
+        `/api/upload?filename=${file.name}`,
+        {
+          method: 'POST',
+          body: file,
+        }
+      );
 
-  if (res.status === 200) {
-    // revalidatePath('http://localhost:3000/articles');
-    redirect('http://localhost:3000/articles');
+      const newBlob = (await response.json()) as PutBlobResult;
+      uploadedImages.push(newBlob.url); 
+    }
+
+    const res = await apiInstance.post('/api/board/post', {
+      name,
+      content,
+      imgUrls: uploadedImages,
+    });
+
+    if (res.status === 200) {
+      redirect('http://localhost:3000/articles');
+    }
+  } catch (error) {
+    console.log('error', error);
   }
-  // } catch (error) {
-  //   console.log(error);
-  // }
 }
-
-// try {
-//   const res = await fetch('http://localhost:3000/api/board/post', {
-//     method: 'POST',
-//     body: JSON.stringify({ name, content }),
-//     headers: {
-//       'content-type': 'application/json'
-//     }
-//   })
-//   console.log(res)
-//   if (res.ok) {
-//     console.log("Yeai!")
-//     revalidatePath('/post');
-//   } else {
-//     console.log("Oops! Something is wrong.")
-//   }
-// } catch (error) {
-//   console.log(error)
-// }

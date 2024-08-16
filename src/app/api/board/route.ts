@@ -8,7 +8,8 @@ export async function GET(request: Request) {
     id SERIAL PRIMARY KEY,
     name VARCHAR(10) NOT NULL,
     content VARCHAR(500) NOT NULL,
-    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    imgUrls TEXT[]
 );`;
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
