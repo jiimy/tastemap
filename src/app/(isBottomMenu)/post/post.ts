@@ -11,7 +11,7 @@ interface postType {
 }
 
 export async function post(formData: FormData) {
-  console.log('클릭', (formData.get('file') as File)?.name);
+  console.log('클릭', formData.getAll('file'), formData.getAll('file')[0]);
 
   const name = formData.get('name');
   const content = formData.get('content');
@@ -21,23 +21,30 @@ export async function post(formData: FormData) {
     const uploadedImages: string[] = [];
 
     for (const file of files) {
-      const response = await fetch(
-        `/api/upload?filename=${file.name}`,
-        {
-          method: 'POST',
-          body: file,
-        }
-      );
+      if (file.name != '') {
+        const response = await fetch(
+          `/api/upload?filename=${file.name}`,
+          {
+            method: 'POST',
+            body: file,
+          }
+        );
 
-      const newBlob = (await response.json()) as PutBlobResult;
-      uploadedImages.push(newBlob.url); 
+        const newBlob = (await response.json()) as PutBlobResult;
+        uploadedImages.push(`'${newBlob.url}'`);
+      }
     }
+
+    const first = (formData.getAll('file')[0] as File)?.name;
+    const setConvert = first !== '' ? `{${uploadedImages.toString()}}` : null;
+    console.log('cc', setConvert);
 
     const res = await apiInstance.post('/api/board/post', {
       name,
       content,
-      imgUrls: uploadedImages,
+      setConvert
     });
+    console.log('dd', res.status, name, content, setConvert);
 
     if (res.status === 200) {
       redirect('http://localhost:3000/articles');

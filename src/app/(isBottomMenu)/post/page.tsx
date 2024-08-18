@@ -12,7 +12,6 @@ const Index = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const inputFileRef = useRef<HTMLInputElement>(null);
-  const [blob, setBlob] = useState<PutBlobResult | null>(null);
 
   return (
     <div className='content'>
@@ -21,7 +20,7 @@ const Index = () => {
           {/* <span onClick={() => history.go(-1)}>취소</span> */}
           <span onClick={() => router.back()}>취소</span>
           <button type='submit'>완료</button>
-          <input type="text" name="name" id="name" value={session?.user?.email as string} />
+          <input type="text" name="name" id="name" value={session?.user?.name as string} />
         </div>
         <UserInfo theme='post' />
         <div className={s.textarea}>

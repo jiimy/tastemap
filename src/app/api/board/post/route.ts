@@ -9,14 +9,14 @@ export async function POST(request: Request) {
       throw new Error('name and content are required');
     }
 
-    await sql`INSERT INTO board (name, content, imgUrls) VALUES (${name}, ${content} ${imgUrls});`;
+    await sql`INSERT INTO board (name, content, imgUrls) VALUES (${name}, ${content}, ${imgUrls});
+    `;
     return NextResponse.redirect(new URL("http://localhost:3000/articles", request.url), 303);
     // const board = await sql`SELECT * FROM board;`;
     // return NextResponse.json({ board }, { status: 200 }) ;
   } catch (error) {
     return NextResponse.json({ error: request }, { status: 500 });
   }
-
 }
 
 
