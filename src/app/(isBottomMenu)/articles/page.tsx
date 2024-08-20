@@ -6,7 +6,6 @@ import s from './articlespage.module.scss';
 import SubTitle from '@/components/subTitle/SubTitle';
 import classNames from 'classnames';
 import Tab from '@/components/tab/Tab';
-import board from './get';
 
 const Index = () => {
   const [tab, setTab] = useState(0);
@@ -14,8 +13,6 @@ const Index = () => {
   const handleSelectTap = (index: number) => {
     setTab(index);
   };
-
-  console.log('ㅇㅇ', board);
 
   return (
     <div className='content'>
