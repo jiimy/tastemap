@@ -3,6 +3,16 @@ const path = require('path')
 const nextConfig = {
   // output: "export",
   // distDir: "out",
+   images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'assets.example.com',
+        port: '',
+        pathname: '/account123/**',
+      },
+    ],
+  },
   sassOptions: {
   includePaths: [path.join(__dirname, 'src/assets/styles')],
   prependData: `@import "_mixins.scss"; @import "_variables";` ,

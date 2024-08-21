@@ -41,7 +41,8 @@ const ArticleUi = ({ theme, data }: articlesListType) => {
         {/* {data.imgurls != null && data.imurls.map((item: any, i: number) => (
           <Image src={item} key={i} alt="" />
         ))} */}
-        {data.imgurls != null && typeof(data.imgurls) != 'number' && <Image src={data.imgurls[0]} alt="" /> }
+        {/* {data.imgurls != null && <Image src={data.imgurls[0]} alt="" fill /> } */}
+        {data.imgurls != null && <Image src="https://xxjrg87yxh7xrark.public.blob.vercel-storage.com/00-td3rKzTLWBq1lP1Nb7HKkCvkGzfIty.png" alt="" fill /> }
         {/* list 에서 이미지가 여러개 있다면 처음것만 보여주고 갯수 출력 */}
         <span className={s.count}>+3</span>
       </div>
