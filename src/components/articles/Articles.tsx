@@ -6,12 +6,21 @@ import Link from 'next/link';
 import UserInfo from '../userInfo/UserInfo';
 import classNames from 'classnames';
 import ShopEmoji from '../shopEmoji/ShopEmoji';
+import Image from 'next/image';
 
-type articlesListType = {
+type articlesListType<T = any> = {
   theme: 'info' | 'list', // info: 게시글 상세, list: 글 목록
+  data: Record<string, any>;
 }
 
-const ArticleUi = ({ theme }: articlesListType) => {
+const ArticleUi = ({ theme, data }: articlesListType) => {
+
+  console.log(
+    // data.imgurls != null && data.imurls.map((item: any, i: number) => (
+    //     console.log(data)
+    //   ))
+    data.imgurls
+  )
   return (
     <>
       <div className={classNames('', {
@@ -23,20 +32,16 @@ const ArticleUi = ({ theme }: articlesListType) => {
       <div className={classNames([s.content], {
         'is_info': theme == 'info'
       })}>
-        다람쥐 헌 쳇바퀴에 돌아가 다람쥐 헌 쳇바퀴에 돌아가 다람쥐 헌 쳇바퀴에 돌아가 다람쥐 헌 쳇바퀴에 돌아가 다람쥐 헌 쳇바퀴에 돌아가 다람쥐 헌 쳇바퀴에 돌아가 다람쥐 헌 쳇바퀴에 돌아가 다람쥐 헌 쳇바퀴에 돌아가 다람쥐 헌 쳇바퀴에 돌아가
+        { data.content}
       </div>
       <div className={classNames([s.img], {
         [s.list_img]: theme == 'list'
       })}>
-        
-        {/* post 에서 이미지가 여러개 있다면 슬라이드 */}
-        <img src="https://source.unsplash.com/random" alt="" />
-        <img src="https://source.unsplash.com/random" alt="" />
-        <img src="https://source.unsplash.com/random" alt="" />
-        <img src="https://source.unsplash.com/random" alt="" />
-        <img src="https://source.unsplash.com/random" alt="" />
-        <img src="https://source.unsplash.com/random" alt="" />
-        <img src="https://source.unsplash.com/random" alt="" />
+        {/* <img src="https://source.unsplash.com/random" alt="" /> */}
+        {/* {data.imgurls != null && data.imurls.map((item: any, i: number) => (
+          <Image src={item} key={i} alt="" />
+        ))} */}
+        {data.imgurls != null && typeof(data.imgurls) != 'number' && <Image src={data.imgurls[0]} alt="" /> }
         {/* list 에서 이미지가 여러개 있다면 처음것만 보여주고 갯수 출력 */}
         <span className={s.count}>+3</span>
       </div>
@@ -57,19 +62,19 @@ const ArticleUi = ({ theme }: articlesListType) => {
   )
 }
 
-const Articles = ({ theme = 'list' }: articlesListType) => {
+const Articles = ({ theme = 'list', data }: articlesListType) => {
   return (
     <>
       {
         theme == 'list' &&
         <Link className={s.articles} href="">
-          <ArticleUi theme={theme} />
+            <ArticleUi theme={theme} data={data} />
         </Link>
       }
       {
         theme == 'info' &&
         <div className={s.articles}>
-          <ArticleUi theme={theme} />
+            <ArticleUi theme={theme} data={data} />
         </div>
       }
     </>
