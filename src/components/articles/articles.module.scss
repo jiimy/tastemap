@@ -28,6 +28,8 @@
     &.list_img {
       position: relative;
       width: fit-content;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
       .count {
         position: absolute;
         display: flex;

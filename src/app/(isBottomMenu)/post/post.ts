@@ -42,6 +42,7 @@ export async function post(formData: FormData) {
   });
 
   if (res.status === 200) {
+    revalidatePath("http://localhost:3000/articles");
     redirect('http://localhost:3000/articles');
   }
 }

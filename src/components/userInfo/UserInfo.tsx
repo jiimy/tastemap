@@ -9,9 +9,10 @@ import Gravatar from "react-gravatar";
 
 type userInfoStyle = {
   theme?: 'mypage' | 'post'
+  name?: string;
 }
 
-const UserInfo = ({ theme = 'mypage' }: userInfoStyle) => {
+const UserInfo = ({ theme = 'mypage', name }: userInfoStyle) => {
   const { data: session } = useSession();
 
   // console.log('그라바타', session, session?.user?.email);
@@ -21,9 +22,9 @@ const UserInfo = ({ theme = 'mypage' }: userInfoStyle) => {
       [s.is_post]: theme === 'post'
     })}>
       <div className={s.img}>
-        <Gravatar email={session?.user?.email as string} className={s.userProfile} />
+        <Gravatar email={name ? name : session?.user?.name as string} className={s.userProfile} />
       </div>
-      <span>{session?.user?.name}</span>
+      <span>{name ? name : session?.user?.name}</span>
     </div>
   );
 };

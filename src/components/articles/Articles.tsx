@@ -19,32 +19,34 @@ const ArticleUi = ({ theme, data }: articlesListType) => {
     // data.imgurls != null && data.imurls.map((item: any, i: number) => (
     //     console.log(data)
     //   ))
-    data.imgurls
+    '이미지',
+    // data.imgurls, data.imgurls[0], data.imgurls[1],
+    data.imgurls.map((item: any) => item)
   )
   return (
     <>
       <div className={classNames('', {
         [s.list_title]: theme == 'list'
       })}>
-        <UserInfo theme='post' />
+        <UserInfo theme='post' name={data.name} />
         <ShopEmoji status='good' />
       </div>
       <div className={classNames([s.content], {
         'is_info': theme == 'info'
       })}>
-        { data.content}
+        {data.content}
       </div>
       <div className={classNames([s.img], {
         [s.list_img]: theme == 'list'
       })}>
         {/* <img src="https://source.unsplash.com/random" alt="" /> */}
         {/* {data.imgurls != null && data.imurls.map((item: any, i: number) => (
-          <Image src={item} key={i} alt="" />
+          <Image key={i} src={item} alt="" width={300} height={300} style={{ objectFit: "cover" }} />
         ))} */}
-        {/* {data.imgurls != null && <Image src={data.imgurls[0]} alt="" fill /> } */}
-        {data.imgurls != null && <Image src="https://xxjrg87yxh7xrark.public.blob.vercel-storage.com/00-td3rKzTLWBq1lP1Nb7HKkCvkGzfIty.png" alt="" fill /> }
-        {/* list 에서 이미지가 여러개 있다면 처음것만 보여주고 갯수 출력 */}
-        <span className={s.count}>+3</span>
+        {data.imgurls != null && <Image src="https://xxjrg87yxh7xrark.public.blob.vercel-storage.com/00-td3rKzTLWBq1lP1Nb7HKkCvkGzfIty.png" alt="" width={300} height={300} style={{ objectFit: "cover" }} />}
+        {data.imgurls.length >= 2 &&
+          <span className={s.count}>+{data.imgurls.length - 1}</span>
+        }
       </div>
       {theme == 'info' && <>
         <div className={s.locate}>
@@ -64,18 +66,19 @@ const ArticleUi = ({ theme, data }: articlesListType) => {
 }
 
 const Articles = ({ theme = 'list', data }: articlesListType) => {
+  console.log('dd', data.id, typeof (data.id))
   return (
     <>
       {
         theme == 'list' &&
-        <Link className={s.articles} href="">
-            <ArticleUi theme={theme} data={data} />
+        <Link className={s.articles} href={`${data.id}`}>
+          <ArticleUi theme={theme} data={data} />
         </Link>
       }
       {
         theme == 'info' &&
         <div className={s.articles}>
-            <ArticleUi theme={theme} data={data} />
+          <ArticleUi theme={theme} data={data} />
         </div>
       }
     </>

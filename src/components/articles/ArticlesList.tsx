@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
-import Articles from './Articles';
 import { board } from './get';
+import Articles from './Articles';
 
 type articlesListType = {
   type?: 'board' | '',
@@ -16,8 +16,7 @@ const ArticleList = ({ type = 'board' }: articlesListType) => {
       console.log('cc', res.result.rows);
       setData(res.result.rows);
     }); // board 함수를 호출하여 데이터 가져오기
-    console.log('dd', result, data);
-    console.log('maa', data && data.filter((item:any) => item.id == 22))
+    console.log('총데이터', result, data);
   }, []);
 
 
