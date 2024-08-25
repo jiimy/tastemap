@@ -57,12 +57,10 @@ type getBoardType = {
 
 // export async function getBoardId({ id }: getBoardType) {
 export async function getBoardId(id:string) {
-  console.log("받은 id", id);
   try {
     const res = await axios.get(`/api/board/${id}`);
     // revalidatePath("/", "layout");
-    console.log("받은거", res.data);
-    return res.data;
+    return res.data.rows;
   } catch (error) {
     console.error("Error fetching data:", error);
     throw error;

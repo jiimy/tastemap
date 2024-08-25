@@ -1,24 +1,26 @@
-import { sql } from '@vercel/postgres';
-import { NextResponse } from 'next/server';
+import { sql } from "@vercel/postgres";
+import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
-    const { name, content, imgUrls } = await request.json();
+    const { name, content, imgUrls, address } = await request.json();
 
     if (!name || !content) {
-      throw new Error('name and content are required');
+      throw new Error("name and content are required");
     }
-    
+
     // console.log('Received Data:', { name, content, imgUrls });
 
-    await sql`INSERT INTO board (name, content, imgUrls) VALUES (${name}, ${content}, ${imgUrls});
+    await sql`INSERT INTO board (name, content, address, imgUrls) VALUES (${name}, ${content}, ${address}, ${imgUrls});
     `;
-    return NextResponse.redirect(new URL("http://localhost:3000/articles", request.url), 303);
+    return NextResponse.redirect(
+      new URL("http://localhost:3000/articles", request.url),
+      303
+    );
   } catch (error) {
     return NextResponse.json({ error: request }, { status: 500 });
   }
 }
-
 
 // import { sql } from '@vercel/postgres';
 // import { NextResponse } from 'next/server';

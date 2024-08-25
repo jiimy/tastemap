@@ -1,4 +1,4 @@
-// 'use client';
+'use client';
 
 import { getBoardId } from '@/api/board';
 import Article from '@/components/articles/Articles';
@@ -7,22 +7,24 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 const ArticleDetail = () => {
-  // const { id } = useParams<id ();
-  const params = useParams<{ id : string}>();
-  const [data, setData] = useState();
+  // const { id } = useParams(); // TODO:이건 왜 안돼지
+  const params = useParams<{ id: string }>();
+  const [data, setData] = useState<any>();
 
-  console.log('id', params?.id);
   useEffect(() => {
-    const result = getBoardId(params?.id as string).then((res) => {
-      console.log('cc', result);
-      // setData(res.result.rows);
-    }); // board 함수를 호출하여 데이터 가져오기
+    getBoardId(params?.id as string).then((res) => {
+      console.log('res', res, res[0]);
+      setData(res[0]);
+    });
+    // console.log('data', data);
   }, []);
+
 
   return (
     <div>
+      {data?.name}
       서브페이지
-      {/* <Article theme={'info'} />  */}
+      <Article theme={'info'} data={data as any} />
     </div>
   );
 };

@@ -20,24 +20,24 @@ const ArticleUi = ({ theme, data }: articlesListType) => {
       <div className={classNames('', {
         [s.list_title]: theme == 'list'
       })}>
-        <UserInfo theme='post' name={data.name} />
+        <UserInfo theme='post' name={data?.name} />
         <ShopEmoji status='good' />
       </div>
       <div className={classNames([s.content], {
         'is_info': theme == 'info'
       })}>
-        {data.content}
+        {data?.content}
       </div>
       <div className={classNames([s.img], {
         [s.list_img]: theme == 'list'
       })}>
         {/* <img src="https://source.unsplash.com/random" alt="" /> */}
-        {data.imgurls != null && data.imgurls.map((item: any, i: number) => (
+        {data?.imgurls != null && data.imgurls.map((item: any, i: number) => (
           <Image key={i} src={item} alt="" width={300} height={300} style={{ objectFit: "cover" }} />
         ))}
         {/* {data.imgurls != null && <Image src="https://xxjrg87yxh7xrark.public.blob.vercel-storage.com/00-td3rKzTLWBq1lP1Nb7HKkCvkGzfIty.png" alt="" width={300} height={300} style={{ objectFit: "cover" }} />} */}
-        {data.imgurls.length >= 2 &&
-          <span className={s.count}>+{data.imgurls.length - 1}</span>
+        {data?.imgurls.length >= 2 && theme == 'list' &&
+          <span className={s.count}>+{data?.imgurls.length - 1}</span>
         }
       </div>
       {theme == 'info' && <>
