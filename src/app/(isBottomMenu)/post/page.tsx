@@ -3,10 +3,9 @@
 import UserInfo from '@/components/userInfo/UserInfo';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { post } from './post';
 import s from './postpage.module.scss';
 import { useRef, useState } from 'react';
-import { PutBlobResult } from '@vercel/blob';
+import { postBoard } from '@/api/board';
 
 const Index = () => {
   const router = useRouter();
@@ -15,7 +14,7 @@ const Index = () => {
 
   return (
     <div className='content'>
-      <form action={post}>
+      <form action={postBoard}>
         <div className={s.bar}>
           {/* <span onClick={() => history.go(-1)}>취소</span> */}
           <span onClick={() => router.back()}>취소</span>

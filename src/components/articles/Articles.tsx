@@ -15,14 +15,6 @@ type articlesListType<T = any> = {
 
 const ArticleUi = ({ theme, data }: articlesListType) => {
 
-  console.log(
-    // data.imgurls != null && data.imurls.map((item: any, i: number) => (
-    //     console.log(data)
-    //   ))
-    '이미지',
-    // data.imgurls, data.imgurls[0], data.imgurls[1],
-    data.imgurls.map((item: any) => item)
-  )
   return (
     <>
       <div className={classNames('', {
@@ -40,10 +32,10 @@ const ArticleUi = ({ theme, data }: articlesListType) => {
         [s.list_img]: theme == 'list'
       })}>
         {/* <img src="https://source.unsplash.com/random" alt="" /> */}
-        {/* {data.imgurls != null && data.imurls.map((item: any, i: number) => (
+        {data.imgurls != null && data.imgurls.map((item: any, i: number) => (
           <Image key={i} src={item} alt="" width={300} height={300} style={{ objectFit: "cover" }} />
-        ))} */}
-        {data.imgurls != null && <Image src="https://xxjrg87yxh7xrark.public.blob.vercel-storage.com/00-td3rKzTLWBq1lP1Nb7HKkCvkGzfIty.png" alt="" width={300} height={300} style={{ objectFit: "cover" }} />}
+        ))}
+        {/* {data.imgurls != null && <Image src="https://xxjrg87yxh7xrark.public.blob.vercel-storage.com/00-td3rKzTLWBq1lP1Nb7HKkCvkGzfIty.png" alt="" width={300} height={300} style={{ objectFit: "cover" }} />} */}
         {data.imgurls.length >= 2 &&
           <span className={s.count}>+{data.imgurls.length - 1}</span>
         }
@@ -66,12 +58,11 @@ const ArticleUi = ({ theme, data }: articlesListType) => {
 }
 
 const Articles = ({ theme = 'list', data }: articlesListType) => {
-  console.log('dd', data.id, typeof (data.id))
   return (
     <>
       {
         theme == 'list' &&
-        <Link className={s.articles} href={`${data.id}`}>
+        <Link className={s.articles} href={`/articles/${data.id}`}>
           <ArticleUi theme={theme} data={data} />
         </Link>
       }
