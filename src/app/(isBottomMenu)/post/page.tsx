@@ -6,11 +6,13 @@ import { useRouter } from 'next/navigation';
 import s from './postpage.module.scss';
 import { useRef, useState } from 'react';
 import { postBoard } from '@/api/board';
+import MapModal from '@/components/portalModal/mapModal/MapModal';
 
 const Index = () => {
   const router = useRouter();
   const { data: session } = useSession();
   const inputFileRef = useRef<HTMLInputElement>(null);
+  const [mapmodal, setMapmodal] = useState(false);
 
   return (
     <div className='content'>
@@ -28,13 +30,11 @@ const Index = () => {
         <input name="file" ref={inputFileRef} type="file" multiple />
       </form>
       <div>
-        {/* <span className={s.file}>
-          <input type="file" name="" id="" />
-          사진추가
-        </span>
+        <button onClick={() => setMapmodal(true)}>장소 추가</button>
+        {mapmodal && <MapModal setOnModal={setMapmodal} />}
         <span className={s.place}>
           장소
-        </span> */}
+        </span>
       </div>
     </div>
   );

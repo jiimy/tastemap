@@ -1,16 +1,8 @@
 import React from 'react'
 import ModalFrame from '../ModalFrame'
+import { ChildrenModalType } from '@/types/modal'
 
-type BasicModalType = {
-  setOnModal: React.Dispatch<React.SetStateAction<boolean>>,
-  children: React.ReactNode,
-  dimClick?: boolean,
-  isDim?: boolean,
-  onClose?: boolean,
-  className?: string
-}
-
-const BasicModal = ({ setOnModal, children, dimClick, isDim = true, className }: BasicModalType) => {
+const BasicModal = ({ setOnModal, children, dimClick, isDim = true, className }: ChildrenModalType) => {
   return (
     <ModalFrame
       setOnModal={setOnModal}

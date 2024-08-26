@@ -12,7 +12,6 @@
     "@tanstack/react-query": "^5.31.0",
     "@tanstack/react-query-devtools": "^5.51.21",
     "@tanstack/react-query-next-experimental": "^5.51.21",
-    "@types/navermaps": "^3.7.5",
     "@types/node": "20.11.19",
     "@types/react": "18.2.56",
     "@types/react-dom": "18.2.19",
@@ -39,6 +38,7 @@
     "zustand": "^4.5.1"
   },
   "devDependencies": {
+    "@types/navermaps": "^3.7.5",
     "@types/react-gravatar": "^2.6.14"
   }
 }
