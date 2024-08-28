@@ -3,6 +3,7 @@ import './globals.css'
 import Head from './head'
 import './layout.scss';
 import QueryProviders from './provider/queryProvider';
+import Location from '@/components/location/Location';
 
 export default function RootLayout({
   children,
@@ -22,6 +23,7 @@ export default function RootLayout({
                 {children}
               </div>
             </main>
+            <Location />
           </AuthContext>
         </QueryProviders>
         <div id="modal" />
