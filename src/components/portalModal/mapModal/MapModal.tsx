@@ -3,6 +3,7 @@ import { ExportModalType } from '@/types/modal';
 import { useEffect, useRef, useState } from 'react';
 import ModalFrame from '../ModalFrame';
 import { searchMapApi } from "@/api/map";
+import axios from "axios";
 
 const MapModal = ({
   setOnModal,
@@ -14,9 +15,6 @@ const MapModal = ({
   const [searchAddr, setSearchAddr] = useState('');
   const [route, setRoute] = useState([]);
   const locate = LocateStateStore((state) => state.locate);
-
-  console.log('cc', locate);
-
 
   useEffect(() => {
     const map = new window.naver.maps.Map("map", {
@@ -56,21 +54,60 @@ const MapModal = ({
   }, [])
 
 
-  const handleChange = (event:any) => {
+  const handleChange = (event: any) => {
     setText(event.target.value);
   };
 
-  const handleKeyDown = (event:any) => {
+  const handleKeyDown = (event: any) => {
     if (event.key === 'Enter') {
       // 엔터 키가 눌렸을 때의 처리
       handleSubmit();
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setText('');
-    searchMapApi(`${searchAddr}${text.trim()}`)
+    searchMapApi(`${searchAddr}${text.trim()}`).then((res) => {
+      console.log('api', res)
+    })
+
+    try {
+      // const response = await axios.get('/api/map', {
+      const response = await axios.get('https://openapi.naver.com/v1/search/local.json', {
+        params: { text }
+      });
+      // setResults(response.data.items || []);
+      console.log('gpt : ', response)
+    } catch (error) {
+      console.error('Error searching:', error);
+    }
   };
+
+  useEffect(() => {
+    console.log('api 실행');
+    // axios.get("v1/search/local.json", {
+    //   params: {
+    //     query: '다이소',
+    //     sort: "comment",
+    //     display: 10,
+    //   },
+    //   headers: {
+    //     "X-Naver-Client-Id": "yDj1zz6s7PIruaIuI3kU",
+    //     "X-Naver-Client-Secret": "7a4xvqlIgm",
+    //   },
+    // }).then(response => {
+    //   // 응답 데이터 처리
+    //   console.log('Response data:', response.data);
+    // })
+    try {
+      axios.get('/api/map', {
+        params: '다이소'
+      }).then((res) => console.log('클라이언트', res));
+      // setResults(response.data.items || []);
+    } catch (error) {
+      console.error('Error searching:', error);
+    }
+  }, [])
 
 
   return (

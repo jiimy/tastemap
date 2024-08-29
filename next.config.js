@@ -3,6 +3,17 @@ const path = require('path')
 const nextConfig = {
   // output: "export",
   // distDir: "out",
+  reactStrictMode: true,
+  swcMinify: true,
+  async rewrites() {
+    return [
+      {
+        source: "/api/map/:path",
+        destination:
+          "https://openapi.naver.com/v1/search/local.json?sort=comment&display=10&query=서울특별시 관악구 서원동  다이소",
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
