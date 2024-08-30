@@ -99,14 +99,13 @@ const MapModal = ({
     //   // 응답 데이터 처리
     //   console.log('Response data:', response.data);
     // })
-    try {
-      axios.get('/api/map', {
-        params: '다이소'
-      }).then((res) => console.log('클라이언트', res));
-      // setResults(response.data.items || []);
-    } catch (error) {
-      console.error('Error searching:', error);
-    }
+    axios.get('/api/map', {
+      params: {
+        id: '다이소'
+      }
+    }).then((res) => console.log('클라이언트', res));
+    // setResults(response.data.items || []);
+
   }, [])
 
 
