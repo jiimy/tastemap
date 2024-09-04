@@ -15,6 +15,7 @@ const MapModal = ({
   const [searchAddr, setSearchAddr] = useState('');
   const [route, setRoute] = useState([]);
   const locate = LocateStateStore((state) => state.locate);
+  console.log('cc', locate);
 
   useEffect(() => {
     const map = new window.naver.maps.Map("map", {
@@ -32,27 +33,6 @@ const MapModal = ({
     })
 
   }, [route, locate]);
-
-  useEffect(() => {
-    naver.maps.Service.reverseGeocode({
-      // coords: new naver.maps.LatLng(locate.latitude, locate.longitude),
-      coords: new naver.maps.LatLng(37.482970, 126.932413),
-    }, function (status, response) {
-      if (status !== naver.maps.Service.Status.OK) {
-        return alert('Something wrong!');
-      }
-
-      const result = response.v2, // 검색 결과의 컨테이너
-        // items = result.results, // 검색 결과의 배열
-        address = result.address; // 검색 결과로 만든 주소
-
-      // do Something
-      // console.log('var', result, items, address)
-      console.log('var', address.jibunAddress)
-      setSearchAddr(address.jibunAddress);
-    });
-  }, [])
-
 
   const handleChange = (event: any) => {
     setText(event.target.value);
@@ -101,12 +81,12 @@ const MapModal = ({
     // })
     axios.get('/api/map', {
       params: {
-        id: '다이소'
+        search: `${searchAddr} 다이소`
       }
-    }).then((res) => console.log('클라이언트', res));
+    }).then((res) => console.log('클라이언트', res.data?.cleanData.items));
     // setResults(response.data.items || []);
 
-  }, [])
+  }, [searchAddr])
 
 
   return (

@@ -15,6 +15,8 @@ const Index = () => {
     }
   }, [])
 
+  console.log('data', session);
+
   return (
     <div className='content'>
       <ShareButton />

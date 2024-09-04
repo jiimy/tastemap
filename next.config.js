@@ -8,7 +8,6 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // matching all API routes
         // source: "/api/map",
         source: "/api/:path*",
         headers: [
@@ -30,9 +29,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/map/:path",
+        // source: "/api/map/:path",
+        source: "/result/:path",
         destination:
-          "https://openapi.naver.com/v1/search/local.json?sort=comment&display=10&query=서울특별시 관악구 서원동  다이소",
+          "/api/map/:path",
       },
     ];
   },

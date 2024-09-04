@@ -7,11 +7,11 @@ const Map = () => {
   const locate = LocateStateStore((state) => state.locate);
   const [route, setRoute] = useState([]);
   // const getLocation = 
-  useEffect(() => {
-    if(locate.latitude !== 0) {
-      console.log('저장된거 : ', locate);
-    }
-  }, [locate])
+  // useEffect(() => {
+  //   if(locate.latitude !== 0) {
+  //     console.log('저장된거 : ', locate);
+  //   }
+  // }, [locate])
 
   // useEffect(() => {
   //   if (route.length > 0) {
