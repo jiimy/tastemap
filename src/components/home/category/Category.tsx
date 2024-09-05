@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import s from './category.module.scss';
 import Link from 'next/link';
 import { LocateStateStore } from '@/store/locate';
 
 const Category = () => {
-  const { address }= LocateStateStore();
+  const { address } = LocateStateStore();
+
+  console.log('add', address);
 
   return (
     <div className={s.category}>

@@ -1,4 +1,5 @@
 import BottomMenu from "@/components/bottomMenu/BottomMenu"
+import { Suspense } from "react"
 
 export default function RootLayout({
   children,
@@ -7,8 +8,10 @@ export default function RootLayout({
 }) {
   return (
     <div>
+      <Suspense fallback={<div>Loading...</div>}>
       {children}
       <BottomMenu />
+      </Suspense>
     </div>
   )
 }

@@ -8,8 +8,8 @@ export async function GET(request: NextRequest) {
     `https://openapi.naver.com/v1/search/local.json`,
     {
       params: {
-        sort: "comment",
-        display: 10,
+        sort: "random",
+        display: 3,
         query: search,
       },
       headers: {

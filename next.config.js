@@ -5,6 +5,16 @@ const nextConfig = {
   // distDir: "out",
   reactStrictMode: true,
   swcMinify: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "search.pstatic.net",
+        port: '',
+        pathname: '/**'
+      },
+    ],
+  },
   async headers() {
     return [
       {
@@ -31,8 +41,7 @@ const nextConfig = {
       {
         // source: "/api/map/:path",
         source: "/result/:path",
-        destination:
-          "/api/map/:path",
+        destination: "/api/map/:path",
       },
     ];
   },

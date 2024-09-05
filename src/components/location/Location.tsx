@@ -2,29 +2,21 @@
 
 import { useGeoLocation } from "@/hooks/useGeoLocation";
 import { LocateStateStore } from "@/store/locate";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 
 const geolocationOptions = {
   enableHighAccuracy: true,
-  timeout: 1000 * 10,
+  timeout: 1000 * 1,
   maximumAge: 1000 * 3600 * 24,
 }
 
 const Location = () => {
   const { location, error } = useGeoLocation(geolocationOptions);
-  // const { locate, setLocate } = LocateStateStore(); 
 
-  // set
-  // const increasePopulation = LocateStateStore(state => state.setLocate);
-  // const { setLocate } = LocateStateStore();
-  // const setLocation = useSetRecoilState(locationSelector);
-  const { setLocate, setAddress } = LocateStateStore()
-  // get
-  // const getLocation = useRecoilValue(locationSelector);
+  const { setLocate, setAddress } = LocateStateStore();
 
-  useEffect(() => {
-    console.log('location', location);
-    if (location != undefined) {
+  const handleLocationSuccess = useCallback(() => {
+    if (location) {
       setLocate(location);
 
       naver.maps.Service?.reverseGeocode({
@@ -34,21 +26,27 @@ const Location = () => {
           return alert('Something wrong!');
         }
 
-        const result = response.v2, // 검색 결과의 컨테이너
-          address = result.address; // 검색 결과로 만든 주소
+        const result = response.v2;
+        const address = result.address;
 
         const addressLength = address.jibunAddress.trim().split(" ").length;
-        const search1 = address.jibunAddress.trim().split(" ")[`${addressLength - 2}`];
-        const search2 = address.jibunAddress.trim().split(" ")[`${addressLength - 1}`];
-        // console.log('최종 찾는 단어', search1, search2, addressLength)
-        setAddress(`${search1} ${search2}`)
+        const search1 = address.jibunAddress.trim().split(" ")[addressLength - 2];
+        const search2 = address.jibunAddress.trim().split(" ")[addressLength - 1];
+        setAddress(`${search1} ${search2}`);
       });
     }
-  }, [location])
+  }, [location, setLocate, setAddress]);
 
-  // console.log('저장됨? ', location);
+  useEffect(() => {
+    if (error) {
+      console.error(`Location error: ${error}`);
+      // 자동 재시도 로직을 여기에 추가할 수 있습니다.
+    } else {
+      handleLocationSuccess();
+    }
+  }, [error, location, handleLocationSuccess]);
 
   return null;
 }
 
-export default Location
+export default Location;

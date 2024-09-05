@@ -1,28 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 interface ILocation {
   latitude: number;
   longitude: number;
 }
 
-export const useGeoLocation = (options = {}) => {
-  const [location, setLocation] = useState<ILocation>();
-  const [error, setError] = useState("");
+export const useGeoLocation = (
+  options = {},
+  retryAttempts = 3,
+  retryDelay = 3000
+) => {
+  const [location, setLocation] = useState<ILocation | undefined>();
+  const [error, setError] = useState<string | null>(null);
+  const [attempt, setAttempt] = useState<number>(0);
 
   const handleSuccess = (pos: GeolocationPosition) => {
     const { latitude, longitude } = pos.coords;
-
-    setLocation({
-      latitude,
-      longitude,
-    });
+    setLocation({ latitude, longitude });
+    setError(null);
   };
 
   const handleError = (err: GeolocationPositionError) => {
     setError(err.message);
+    if (attempt < retryAttempts) {
+      setAttempt((prevAttempt) => prevAttempt + 1);
+      setTimeout(() => {
+        getLocation();
+      }, retryDelay);
+    }
   };
 
-  useEffect(() => {
+  const getLocation = useCallback(() => {
     const { geolocation } = navigator;
 
     if (!geolocation) {
@@ -31,7 +39,11 @@ export const useGeoLocation = (options = {}) => {
     }
 
     geolocation.getCurrentPosition(handleSuccess, handleError, options);
-  }, [options]);
+  }, [attempt, options, retryAttempts, retryDelay]);
+
+  useEffect(() => {
+    getLocation();
+  }, [getLocation]);
 
   return { location, error };
 };

@@ -9,6 +9,7 @@ export async function GET(request: NextRequest) {
     {
       params: {
         query: search,
+        sore: 'sim'
       },
       headers: {
         "X-Naver-Client-Id": "yDj1zz6s7PIruaIuI3kU",
