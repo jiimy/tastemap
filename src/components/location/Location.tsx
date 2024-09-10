@@ -19,21 +19,24 @@ const Location = () => {
     if (location) {
       setLocate(location);
 
-      naver.maps.Service?.reverseGeocode({
-        coords: new naver.maps.LatLng(location.latitude, location.longitude),
-      }, function (status, response) {
-        if (status !== naver.maps.Service.Status.OK) {
-          return alert('Something wrong!');
-        }
-
-        const result = response.v2;
-        const address = result.address;
-
-        const addressLength = address.jibunAddress.trim().split(" ").length;
-        const search1 = address.jibunAddress.trim().split(" ")[addressLength - 2];
-        const search2 = address.jibunAddress.trim().split(" ")[addressLength - 1];
-        setAddress(`${search1} ${search2}`);
-      });
+      setTimeout(() => {
+        naver.maps.Service?.reverseGeocode({
+          coords: new naver.maps.LatLng(location.latitude, location.longitude),
+        }, function (status, response) {
+          if (status !== naver.maps.Service.Status.OK) {
+            return alert('Something wrong!');
+          }
+  
+          const result = response.v2;
+          const address = result.address;
+  
+          const addressLength = address.jibunAddress.trim().split(" ").length;
+          const search1 = address.jibunAddress.trim().split(" ")[addressLength - 2];
+          const search2 = address.jibunAddress.trim().split(" ")[addressLength - 1];
+          console.log('변환', search1);
+          setAddress(`${search1} ${search2}`);
+        });
+      }, 300);
     }
   }, [location, setLocate, setAddress]);
 

@@ -13,6 +13,18 @@ const nextConfig = {
         port: '',
         pathname: '/**'
       },
+      {
+        protocol: "https",
+        hostname: "pup-review-phinf.pstatic.net",
+        port: '',
+        pathname: '/**'
+      },
+      {
+        protocol: "https",
+        hostname: "d12zq4w4guyljn.cloudfront.net",
+        port: '',
+        pathname: '/**'
+      },
     ],
   },
   async headers() {

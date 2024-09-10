@@ -39,14 +39,12 @@ const Search = () => {
         const title = item?.title; // title만 추출
         axios.get(`/api/mapImage?query=${encodeURIComponent(title)}`)
           .then((res) => {
-            // console.log(`이미지검색 for ${index}}`, res.data?.cleanData?.items[0].link);
+            console.log(`이미지검색 for ${index}}`, res.data?.cleanData.items);
             setImg(prev => [...prev, res.data?.cleanData?.items[0].thumbnail]);
           })
       });
     }
   }, [data])
-
-  console.log('cc', img);
 
   return (
     <div>
@@ -64,9 +62,12 @@ const Search = () => {
           <div key={index}>
             <div>
               {item}
+              <br/>
+              <br />
             </div>
             <div>
-              <Image src={item} width={100} height={100} alt='11' />
+              <img src={item} alt="" />
+              {/* <Image src={item} width={100} height={100} alt='11' /> */}
             </div>
           </div>
         ))}
