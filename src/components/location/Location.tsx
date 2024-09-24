@@ -15,6 +15,7 @@ const Location = () => {
 
   const { setLocate, setAddress } = LocateStateStore();
 
+  // TODO: async await 으로 바꾸기
   const handleLocationSuccess = useCallback(() => {
     if (location) {
       setLocate(location);
