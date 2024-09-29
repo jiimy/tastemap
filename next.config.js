@@ -10,8 +10,14 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "search.pstatic.net",
-        port: '',
+        port: '3000',
         pathname: '/**'
+      },
+      {
+        protocol: "https",
+        hostname: "search.pstatic.net",
+        port: '3000',
+        pathname: '/common/**'
       },
       {
         protocol: "https",
