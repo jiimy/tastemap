@@ -1,5 +1,6 @@
 import { sql } from "@vercel/postgres";
 import { NextResponse } from "next/server";
+// import { redirect } from "next/navigation";
 
 export async function POST(request: Request) {
   try {
@@ -13,6 +14,7 @@ export async function POST(request: Request) {
 
     await sql`INSERT INTO board (name, content, address, imgUrls) VALUES (${name}, ${content}, ${address}, ${imgUrls});
     `;
+    //  redirect(`/articles`);
     return NextResponse.redirect(
       new URL("http://localhost:3000/articles", request.url),
       303

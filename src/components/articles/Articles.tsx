@@ -36,7 +36,7 @@ const ArticleUi = ({ theme, data }: articlesListType) => {
           <Image key={i} src={item} alt="" width={300} height={300} style={{ objectFit: "cover" }} />
         ))}
         {/* {data.imgurls != null && <Image src="https://xxjrg87yxh7xrark.public.blob.vercel-storage.com/00-td3rKzTLWBq1lP1Nb7HKkCvkGzfIty.png" alt="" width={300} height={300} style={{ objectFit: "cover" }} />} */}
-        {data?.imgurls.length >= 2 && theme == 'list' &&
+        {data?.imgurls?.length >= 2 && theme == 'list' &&
           <span className={s.count}>+{data?.imgurls.length - 1}</span>
         }
       </div>

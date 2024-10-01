@@ -8,6 +8,19 @@ export async function getBoard() {
   try {
     const res = await axios.get("/api/board/get");
     // revalidatePath("/", "layout");
+    console.log('api', res);
+    return res.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+}
+
+// NOTE: 테스트 코드
+export async function getPet() {
+  try {
+    const res = await axios.get("/api/pets/get-pets");
+    console.log("api", res);
     return res.data;
   } catch (error) {
     console.error("Error fetching data:", error);

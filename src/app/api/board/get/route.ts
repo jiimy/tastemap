@@ -1,10 +1,12 @@
-import { sql } from '@vercel/postgres';
-import { NextResponse } from 'next/server';
+import { sql } from "@vercel/postgres";
+import { NextResponse, NextRequest } from "next/server";
 
 export async function GET(request: Request) {
   try {
-    const result =
-      await sql`select * from board`;
+    // const { rows } = await sql`select * from board`;
+    // console.log("sql", rows);
+    const result = await sql`select * from Board`;
+    console.log("sql", result);
     return NextResponse.json({ result }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Articles from './Articles';
-import { getBoard } from '@/api/board';
+import { getBoard, getPet } from '@/api/board';
 
 type articlesListType = {
   type?: 'board' | '',
@@ -15,7 +15,13 @@ const ArticleList = ({ type = 'board' }: articlesListType) => {
     getBoard().then((res) => {
       console.log('cc', res.result.rows);
       setData(res.result.rows);
-    }); // board 함수를 호출하여 데이터 가져오기
+    });
+
+    // NOTE: 테스트 코드
+    // getPet().then((res) => {
+    //   console.log('cc', res.result.rows);
+    //   setData(res.result.rows);
+    // });
     // console.log('총데이터', result, data);|
   }, []);
 
