@@ -13,6 +13,7 @@ const Index = () => {
   const { data: session } = useSession();
   const inputFileRef = useRef<HTMLInputElement>(null);
   const [mapmodal, setMapmodal] = useState(false);
+  const [isText, setIsText] = useState();
 
   return (
     <div className='content'>
@@ -20,22 +21,23 @@ const Index = () => {
         <div className={s.bar}>
           {/* <span onClick={() => history.go(-1)}>취소</span> */}
           <span onClick={() => router.back()}>취소</span>
-          <button type='submit'>완료</button>
-          <input type="text" name="name" id="name" value={session?.user?.name as string} />
+          <button type='submit' disabled={!isText}>완료</button>
+
         </div>
         <UserInfo theme='post' />
+
         <div className={s.textarea}>
-          <textarea name="content" id="content"></textarea>
+          <textarea name="content" id="content" onChange={(e: any) => setIsText(e.target.value)}></textarea>
         </div>
         <input name="file" ref={inputFileRef} type="file" multiple />
+        <div>
+          <button onClick={() => setMapmodal(true)}>장소 추가</button>
+          {mapmodal && <MapModal setOnModal={setMapmodal} />}
+          <span className={s.place}>
+            장소
+          </span>
+        </div>
       </form>
-      <div>
-        <button onClick={() => setMapmodal(true)}>장소 추가</button>
-        {mapmodal && <MapModal setOnModal={setMapmodal} />}
-        <span className={s.place}>
-          장소
-        </span>
-      </div>
     </div>
   );
 };

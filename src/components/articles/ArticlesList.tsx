@@ -22,8 +22,7 @@ const ArticleList = ({ type = 'board' }: articlesListType) => {
     //   console.log('cc', res.result.rows);
     //   setData(res.result.rows);
     // });
-    // console.log('총데이터', result, data);|
-  }, []);
+  }, [data]);
 
 
   return (

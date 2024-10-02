@@ -16,11 +16,11 @@ export default function RootLayout({
       <body>
         <QueryProviders>
           <AuthContext>
-            {/* <main className={s['main']}>
-          <div className={s['mobile-view']}> */}
             <main className="main">
               <div className="mobile-view">
-                {children}
+                <div>
+                  {children}
+                </div>
               </div>
             </main>
             <Location />

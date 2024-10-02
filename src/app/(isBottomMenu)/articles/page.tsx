@@ -17,7 +17,6 @@ const Index = () => {
   return (
     <div className='content'>
       <SubTitle>
-        {tab}
         <Tab tab={[
           { text: '전체', select: false },
           { text: '구독', select: false }
@@ -25,18 +24,14 @@ const Index = () => {
           selectTap={handleSelectTap}
         />
       </SubTitle>
-      <div>
-      </div>
-      <div>
-        {tab === 0 &&
-          // 전체
-          <ArticleList type='' />
-        }
-        {tab === 1 &&
-          // 구독
-          <ArticleList />
-        }
-      </div>
+      {tab === 0 &&
+        // 전체
+        <ArticleList type='' />
+      }
+      {tab === 1 &&
+        // 구독
+        <ArticleList />
+      }
     </div>
   );
 };

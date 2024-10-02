@@ -21,9 +21,11 @@ const Search = () => {
     <div className={s.search}>
       <form onSubmit={onSubmit}>
         <input type="search" className="search" value={searchTerm} onChange={handleChange} />
-        <div><SearchIcon onClick={(e: any) => {
-          onSubmit(e);
-        }} /></div>
+        <div>
+          <SearchIcon height={28} width={28} onClick={(e: any) => {
+            onSubmit(e);
+          }} />
+        </div>
       </form>
     </div>
   );

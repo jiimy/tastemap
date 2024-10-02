@@ -7,9 +7,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      {children}
-      <BottomMenu />
-    </Suspense>
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        {children}
+      </Suspense>
+    </div>
   )
 }

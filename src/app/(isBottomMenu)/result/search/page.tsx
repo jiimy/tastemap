@@ -1,5 +1,8 @@
 'use client';
 
+import Map from '@/components/map/Map';
+import SubTitle from '@/components/subTitle/SubTitle';
+import Tab from '@/components/tab/Tab';
 import axios from 'axios';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
@@ -16,11 +19,25 @@ const Search = () => {
   const keyword = searchParams.get('keyword') || '';
   const [data, setData] = useState<DataType[]>([]);
   const [img, setImg] = useState<string[]>([]);
+  const [tab, setTab] = useState(0);
+  const [mapPoint, setMapPoint] = useState([]);
+
+  const handleSelectTap = (index: number) => {
+    setTab(index);
+  };
 
   useEffect(() => {
     axios.get(`/api/map?query=${keyword}`).then((res) => {
       console.log('rr', res);
       const fetchedData = res.data?.cleanData?.items || [];
+
+      const coordinates = fetchedData.map((item: any) => ({
+        mapx: `${item.mapx.slice(0, 3)}.${item.mapx.slice(3)}`,
+        mapy: `${item.mapy.slice(0, 2)}.${item.mapy.slice(2)}`
+      }));
+
+      setMapPoint(coordinates);
+
       // [
       //   {
       //     "title": "모힝 비스트로",
@@ -84,24 +101,45 @@ const Search = () => {
     }
   }, [data])
 
+  if (mapPoint) {
+    console.log('좌표 모음', mapPoint);
+  }
+
   return (
-    <div>
-      검색 페이지 {searchParams}
-      <ul>
-        {data?.map((item: DataType, index) => (
-          <li key={index}>
-            <div>{item.title}</div>
-            <p>{item.address}</p>
-            {item.img && (
-              <>
-                {/* <Image src={item?.img} width={100} height={100} alt={item.title} /> */}
-                <img src={item?.img} alt={item.title} />
-              </>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <SubTitle>
+        <Tab tab={[
+          { text: '목록으로 보기', select: false },
+          { text: '지도로 보기', select: false }
+        ]}
+          selectTap={handleSelectTap}
+        />
+      </SubTitle>
+      <div className='content'>
+        <b>{searchParams}</b> 에 대한 결과입니다.
+        {tab === 0 &&
+          // 목록
+          <ul>
+            {data?.map((item: DataType, index) => (
+              <li key={index}>
+                <div>{item.title}</div>
+                <p>{item.address}</p>
+                {item.img && (
+                  <>
+                    {/* <Image src={item?.img} width={100} height={100} alt={item.title} /> */}
+                    <img src={item?.img} alt={item.title} />
+                  </>
+                )}
+              </li>
+            ))}
+          </ul>
+        }
+        {tab === 1 &&
+          // 지도
+          <Map />
+        }
+      </div>
+    </>
   );
 };
 

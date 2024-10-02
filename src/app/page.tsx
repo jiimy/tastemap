@@ -12,15 +12,15 @@ export default function Home() {
   console.log('cc', locate, address)
 
   return (
-    <div>
+    <>
+      <Header theme='search' />
       <div className='content'>
-        <Header theme='search' />
         <Map />
         {address &&
           <Sheet />
         }
       </div>
       <BottomMenu />
-    </div>
+    </>
   )
 }
