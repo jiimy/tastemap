@@ -1,9 +1,9 @@
+import Location from '@/components/location/Location';
 import AuthContext from '@/context/AuthContext';
-import './globals.css'
-import Head from './head'
+import './globals.css';
+import Head from './head';
 import './layout.scss';
 import QueryProviders from './provider/queryProvider';
-import Location from '@/components/location/Location';
 
 export default function RootLayout({
   children,

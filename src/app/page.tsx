@@ -6,6 +6,7 @@ import BottomMenu from '@/components/bottomMenu/BottomMenu';
 import Sheet from '@/components/home/sheet/Sheet';
 import Map from '@/components/map/Map';
 import { LocateStateStore } from '@/store/locate';
+import KakaoMap from '@/components/map/KakaoMap';
 
 export default function Home() {
   const { locate, address } = LocateStateStore();
@@ -15,7 +16,8 @@ export default function Home() {
     <>
       <Header theme='search' />
       <div className='content'>
-        <Map />
+        {/* <Map /> */}
+        <KakaoMap />
         {address &&
           <Sheet />
         }

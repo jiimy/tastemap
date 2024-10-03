@@ -10,6 +10,12 @@ export default function Head() {
       {/* 네이버 지도 */}
       <Script type="text/javascript" src="http://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=yugm16gkcw2" />
       <Script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=ugm16gkcw2&submodules=geocoder" />
+      {/* 카카오 지도 NOTE: 추후 이걸로 교체 */}
+      <Script src="https://developers.kakao.com/sdk/js/kakao.js" async />
+      <Script
+        strategy="beforeInteractive"
+        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=c81e892e5acfa11c35bb8e4f20a4d26d&libraries=services&autoload=false`}
+        ></Script>
     </head>
   )
 }
