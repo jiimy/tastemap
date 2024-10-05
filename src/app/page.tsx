@@ -16,8 +16,8 @@ export default function Home() {
     <>
       <Header theme='search' />
       <div className='content'>
-        {/* <Map /> */}
-        <KakaoMap />
+        <Map />
+        {/* <KakaoMap /> */}
         {address &&
           <Sheet />
         }
