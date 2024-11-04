@@ -30,3 +30,4 @@ const ArticleDetail = () => {
 };
 
 export default ArticleDetail;
+export const runtime = 'edge';

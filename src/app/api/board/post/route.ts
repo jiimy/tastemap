@@ -42,3 +42,4 @@ export async function POST(request: Request) {
 //   const board = await sql`SELECT * FROM board;`;
 //   return NextResponse.json({ board }, { status: 200 });
 // }
+export const runtime = "edge";
