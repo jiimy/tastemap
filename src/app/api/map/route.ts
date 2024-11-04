@@ -24,4 +24,3 @@ export async function GET(request: NextRequest) {
     cleanData,
   });
 }
-export const runtime = "edge";
